@@ -14,7 +14,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
+        //paginate １画面で15個までの商品を表示する
+        $items = Item::paginate(15);
         return view('item/index', ['items' => $items]);
     }
 
