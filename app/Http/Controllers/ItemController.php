@@ -12,10 +12,18 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    //index()の引数でリクエスト内容を受け取れるようにする
+    public function index(Request $request)
     {
+        //リクエストパラメータにkeywordが入ってたら検索機能を動かす
+        if($request->has('keyword')){
+            //$変数 = モデルクラス::where('フィールド名', 値)
+            $items = Item::where('name', 'like', '%'.$request->get('keyword').'%')->paginate(15);
+        }else{
+            $items = Item::paginate(15);
+        }
         //paginate １画面で15個までの商品を表示する
-        $items = Item::paginate(15);
         return view('item/index', ['items' => $items]);
     }
 

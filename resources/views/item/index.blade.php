@@ -14,7 +14,8 @@
             @endforeach
         </div>
         <div class="row justify-content-center">
-            {{$items->links()}}
+            {{-- Request::get('keyword')でクエリパラメータのkeywordの内容をビューから参照できる。 --}}
+            {{$items->appends(['keyword' => Request::get('keyword')])->links()}}
         </div>
     </div>
 @endsection
