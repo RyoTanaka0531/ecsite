@@ -19,7 +19,7 @@ class CartItemController extends Controller
         $cartitems = CartItem::select('cart_items.*', 'items.name', 'items.amount')
                 //ログイン中のユーザーのユーザーIDをキーにしてカート内の商品を検索している。
                 ->where('user_id', Auth::id())
-                //cart_itemsテーブルとitemsテーブルを結合
+                //joinメソッドでcart_itemsテーブルとitemsテーブルを結合
                 //cart_itemsテーブルは商品ID(cart_items.item_id)しか持っていないので、cart_items.item_idをキーにしてitemsテーブルから商品名と価格を取得できるようにしている
                 //join()で内部結合する。第一引数で結合したいテーブル名。第2引数、第4引数で結合したいカラム。第3引数で比較演算子（基本的には「=」でOK）
                 ->join('items', 'items.id', '=', 'cart_items.item_id')

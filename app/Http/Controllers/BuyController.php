@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\Buy;
+use Illuminate\Support\Facades\Mail;
 
 class BuyController extends Controller
 {
@@ -29,6 +31,9 @@ class BuyController extends Controller
         //リクエストパラメータにpostという値が含まれていれば注文を確定する処理
         //postが含まれていなければもう一度購入画面を表示して、ビュー側で入力確認の表示を切り替える
         if($request->has('post')){
+            //MailクラスとBuyクラスを使ってメールを送信する
+            //Auth::user()->emailでログイン中のユーザーのメールアドレスを取得
+            Mail::to(Auth::user()->email)->send(new Buy());
             //ユーザーが持っているカート情報を削除し、同じ注文を何度も行わないようにする
             CartItem::where('user_id', Auth::id())->delete();
             return view('buy/complete');
