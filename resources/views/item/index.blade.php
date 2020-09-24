@@ -5,7 +5,7 @@
             @foreach ($items as $item)
                 <div class="col-md-4 md-2">
                     <div class="card">
-                        <div class="card-header">{{$item->name}}</div>
+                        <div class="card-header"><a href="/item/{{$item->id}}">{{$item->name}}</a></div>
                         <div class="card-body">
                             {{$item->amount}}
                         </div>
