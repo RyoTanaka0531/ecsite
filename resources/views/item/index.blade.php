@@ -1,4 +1,5 @@
 @extends('layouts/app')
+@section('title', '商品一覧')
 @section('content')
 @if (Session::has('flash_message'))
     <div class="alert alert-success">

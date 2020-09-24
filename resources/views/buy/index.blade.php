@@ -1,5 +1,9 @@
 @extends('layouts.app')
-
+@if(Request::has('confirm'))
+@section('title', '内容確認')
+@else
+@section('title', 'お届け先入力')
+@endif
 @section('content')
     <div class="container">
         <div class="row justify-content-center" style="margin-bottom:10px;">

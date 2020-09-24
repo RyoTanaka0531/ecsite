@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '購入完了')
 @section('content')
     <div class="container">
         <div class="row justify-content-center" style="margin-bottom: 10px">

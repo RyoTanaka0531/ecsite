@@ -1,10 +1,15 @@
 @extends('layouts.app')
+
+@section('title', 'カート内')
+
 @section('content')
 @if (Session::has('flash_message'))
     <div class="alert alert-success">
         {{session('flash_message')}}
     </div>
 @endif
+
+{{-- @isset($cartitems) --}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -43,12 +48,17 @@
                         {{$subtotal}}円
                     </div>
                     <div>
-                        <a  class="btn btn-primary" href="/buy" role="button" style="margin-left: 10px;">
-                            レジに進む
-                        </a>
+                        @if (isset($cartitem))
+                            <a  class="btn btn-primary" href="/buy" role="button" style="margin-left: 10px;">
+                                レジに進む
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
+{{-- @else
+    <h4 style="text-align: center">カート内に商品がありません</h4>
+@endif --}}
 @endsection
