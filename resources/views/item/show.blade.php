@@ -8,7 +8,7 @@
                         <a href="/item/{{$item->id}}">{{$item->name}}</a>
                     </div>
                     <div class="card-body">
-                        {{$item->amount}}
+                        {{$item->amount}}円
                     </div>
                 </div>
             </div>

@@ -80,7 +80,7 @@ class CartItemController extends Controller
      * @param  \App\CartItem  $cartItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(CartItem $cartItem)
+    public function edit(Request $request, CartItem $cartItem)
     {
         //
     }
@@ -92,11 +92,15 @@ class CartItemController extends Controller
      * @param  \App\CartItem  $cartItem
      * @return \Illuminate\Http\Response
      */
+    //更新する元となるカート情報と、更新する数量を受け取るためのリクエスト情報を受け取る
     public function update(Request $request, CartItem $cartItem)
     {
         //
+        $cartItem->quantity = $request->post('quantity');
+        $cartItem->save();
+        return redirect('cartitem')->with('flash_message', 'カートを更新しました');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -106,5 +110,7 @@ class CartItemController extends Controller
     public function destroy(CartItem $cartItem)
     {
         //
+        $cartItem->delete();
+        return redirect('cartitem')->with('flash_message', 'カートから削除しました');
     }
 }
