@@ -29,3 +29,5 @@ Route::get('/cartitem', 'CartitemController@index');
 
 Route::put('/cartitem/{cartItem}', 'CartItemController@update');
 Route::delete('/cartitem/{cartItem}', 'CartItemController@destroy');
+Route::get('/buy', 'BuyController@index');
+Route::post('/buy', 'BuyController@store');
