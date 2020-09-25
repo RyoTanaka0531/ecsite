@@ -18,7 +18,7 @@
                         {{-- @auth〜@endauthを使うことにより、ユーザーがログインしている時だけ表示される --}}
                         @auth
                             <form action="cartitem" method="post" class="form-inline m-1">
-                                {{csrf_field()}}
+                                @csrf
                                 <select name="quantity" class="form-contorl col-md-3 mr-1">
                                     <option selected>1</option>
                                     <option>2</option>

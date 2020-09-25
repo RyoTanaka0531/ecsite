@@ -15,6 +15,9 @@ class CartItemController extends Controller
      */
     public function index()
     {
+        //リレーションを定義し、データベースからcartitemsを取得する方法に書き換える
+
+
         //「name」や「amount」など検索結果で取得したいカラムを指定
         $cartitems = CartItem::select('cart_items.*', 'items.name', 'items.amount')
                 //ログイン中のユーザーのユーザーIDをキーにしてカート内の商品を検索している。

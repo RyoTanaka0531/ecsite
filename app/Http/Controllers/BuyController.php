@@ -38,7 +38,8 @@ class BuyController extends Controller
             CartItem::where('user_id', Auth::id())->delete();
             return view('buy/complete');
         }
-        //フォームのリクエスト情報をセッションに記録
+        //「修正する」が押された場合の処理
+        //入力した内容を編集できるようにするためフォームのリクエスト情報をセッションに記録
         //これにより、確認画面でセッション情報を取り出して入力内容を表示できる
         $request->flash();
         return $this->index();

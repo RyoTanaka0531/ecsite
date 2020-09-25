@@ -26,7 +26,15 @@
                                 <form action="/cartitem/{{$cartitem->id}}" method="post">
                                     @method('PUT')
                                     @csrf
-                                    <input type="text" name="quantity" value="{{$cartitem->quantity}}" class="form-control">個
+                                    {{-- <input type="text" name="quantity" value="{{$cartitem->quantity}}" class="form-control">個 --}}
+                                    <select name="quantity" id="quantity" class="form-control">
+                                        <option selected>{{$cartitem->quantity}}</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
                                     <button type="submit" class="btn btn-primary">更新</button>
                                 </form>
                                 <form method="POST" action="/cartitem/{{ $cartitem->id }}">
